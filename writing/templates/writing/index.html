@@ -41,6 +41,13 @@
 			<hr/>
 		</div>
 
+<button> <a style = "text-decoration : none"
+href="/writing/addpaper"> Add Paper </a> 
+</button>
+<button> <a style = "text-decoration : none"
+href="/writing/"> Delete Paper </a> 
+</button>
+
 {% if get_papers %}
     {% for thepaper in get_papers %}
         <h2> <a href="{% url 'paper' thepaper.title %}">

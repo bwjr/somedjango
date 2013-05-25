@@ -227,8 +227,8 @@
 		font: 13px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #777;
 		margin: 0;
-		width: 210px;
-		max-width: 100%;
+		width: 500px;
+		max-width: 1000%;
 		display: block;
 		margin-bottom: 20px;
 		background: #fff; }
@@ -258,7 +258,8 @@
 	legend span {
 		font-weight: normal;
 		font-size: 13px;
-		color: #444; }
+		color: #444; } 
+
 
 /* #Misc
 ================================================== */
