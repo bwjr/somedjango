@@ -1,0 +1,10 @@
+{% if get_papers %}
+    {% for thepaper in get_papers %}
+        <h2> <a href="/writing/{{thepaper.title}}/">
+	 {{thepaper.title}} </a> </h2> <p>
+
+	Author: {{thepaper.by_user}}<p>
+    {% endfor %}
+{% else %}
+    <p>No papers are here... yet.</p>
+{% endif %}

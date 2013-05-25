@@ -1,17 +1,8 @@
 from django.db import models
-
-# Create your models here.
-
-class User(models.Model):
-    name = models.CharField(max_length = 500)
-    email = models.EmailField()
-    password = models.CharField(max_length = 500)
-    created_date = models.DateField(auto_now_add = True)
-
-    def __unicode__(self):
-        return self.name
+from django.contrib.auth.models import User
 
 class Paper(models.Model):
+    by_user = models.OneToOneField(User)
     title = models.CharField(max_length = 1000)
     body = models.TextField()
     time = models.DateTimeField(auto_now = True)
@@ -21,7 +12,7 @@ class Paper(models.Model):
 
 class Comments(models.Model):
     thepaper = models.ForeignKey(Paper)
-    by_user = models.ForeignKey(User)
+    by_user = models.OneToOneField(User)
     comment = models.TextField()
     upvotes = models.IntegerField(default = 0)
     downvotes = models.IntegerField(default = 0)
