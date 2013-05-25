@@ -26,6 +26,24 @@
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
+	<!-- Load in jQuery -->
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'> 
+	</script> 
+
+	<script>
+	$(document).ready(function() {
+		$(".hovers").find("button").hide();
+		$(".hovers").hover(function() {
+			$(this).css("background-color", "E1FFFF");
+			$(this).find("button").show();
+		},
+	 	function() {
+			$(this).css("background-color", "FFFFFF");
+			$(this).find("button").hide();
+	 	});
+		});
+	</script>
+
 </head>
 <body>
 
@@ -44,16 +62,15 @@
 <button> <a style = "text-decoration : none"
 href="/writing/addpaper"> Add Paper </a> 
 </button>
-<button> <a style = "text-decoration : none"
-href="/writing/"> Delete Paper </a> 
-</button>
 
 {% if get_papers %}
     {% for thepaper in get_papers %}
+	<div class = "hovers">
         <h2> <a href="{% url 'paper' thepaper.title %}">
 	 {{thepaper.title}} </a> </h2> <p>
-
 	Author: {{thepaper.by_user}}<p>
+	<button class = "hovers" style = "background-color: F08080"> Delete </button>
+	</div>
     {% endfor %}
 {% else %}
     <p>No papers are here... yet.</p>
