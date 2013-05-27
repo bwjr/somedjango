@@ -24,4 +24,4 @@ class Comments(models.Model):
 class PaperForm(ModelForm):
     class Meta:
         model = Paper
-        #exclude = ['by_user']
+        exclude = ['by_user']
