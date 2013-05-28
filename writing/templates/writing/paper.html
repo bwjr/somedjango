@@ -10,7 +10,7 @@
 {% if get_paper %}
         <h2> {{get_paper.title}} </h2> <p>
 	Author: {{get_paper.by_user}}<p>
-	{{get_paper.body}}
+	{{get_paper.body|safe}}
 {% else %}
     <p>Nothing here... yet.</p>
 {% endif %}

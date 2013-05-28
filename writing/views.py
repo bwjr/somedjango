@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import forms
 
 from writing.models import Paper, Comments, PaperForm
 
@@ -11,7 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'get_papers'
 
     def get_queryset(self):
-        return Paper.objects.all().order_by('-time')
+        return Paper.objects.filter(by_user = self.request.user).order_by('-time')
 
 @login_required(login_url='/writing/login/')
 def paper(request, t):

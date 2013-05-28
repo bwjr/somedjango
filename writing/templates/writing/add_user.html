@@ -1,0 +1,13 @@
+{% extends "writing/base.html" %}
+
+{% block content %}
+
+<form method="post" action="">
+{% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" value="Submit" />
+<br> <a href = "{% url 'new_user' %}"> Create an account </a>
+</form>
+
+{% endblock %}
