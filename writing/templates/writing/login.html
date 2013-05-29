@@ -11,8 +11,9 @@
 {{ form.as_p }}
 
 <input type="submit" value="login" />
-<br> <a href = ""> Create an account </a>
 <input type="hidden" name="next" value="{{ '/writing/' }}" />
+<br><a href = "{% url 'add_user' %}"> Create an account </a>
 </form>
+
 
 {% endblock %}

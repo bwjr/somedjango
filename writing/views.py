@@ -2,8 +2,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.views import generic
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import forms
+from django.contrib.auth.forms import UserCreationForm
 
 from writing.models import Paper, Comments, PaperForm
 
@@ -30,3 +31,16 @@ def add_paper(request):
         form = PaperForm()
 
     return render(request, 'writing/addpaper.html', {'form': form})
+
+def add_user(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+	    form.save()
+	    usr = authenticate(username = request.POST['username'], password = 				request.POST['password1'])
+	    login(request, usr)
+            return HttpResponseRedirect('/writing/')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'writing/add_user.html', {'form': form})
