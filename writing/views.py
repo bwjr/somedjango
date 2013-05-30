@@ -8,12 +8,12 @@ from django.contrib.auth.forms import UserCreationForm
 
 from writing.models import Paper, Comments, PaperForm
 
-class IndexView(generic.ListView):
-    template_name = 'writing/index.html'
-    context_object_name = 'get_papers'
-
-    def get_queryset(self):
-        return Paper.objects.filter(by_user = self.request.user).order_by('-time')
+@login_required(login_url='/writing/login/')
+def IndexView(request):
+	if request.method == 'POST':
+        	Paper.delete(Paper.objects.get(title = request.POST['thepaper']))
+	get_papers = Paper.objects.filter(by_user = request.user).order_by('-time')
+	return render(request, 'writing/index.html', {'get_papers' : get_papers})
 
 @login_required(login_url='/writing/login/')
 def paper(request, t):
