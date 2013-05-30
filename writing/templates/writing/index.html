@@ -30,7 +30,8 @@ href="/writing/addpaper"> Add Paper </a>
 	<div class = "hovers">
         <h2> <a href="{% url 'paper' thepaper.title %}">
 	 {{thepaper.title}} </a> </h2> <p>
-	Author: {{thepaper.by_user}}
+	Author: {{thepaper.by_user}} <p>
+	Due: {{thepaper.due}}
 
 	<form action="" method="post">{% csrf_token %}
 	<input type="hidden" name="thepaper" value="{{ thepaper.title }}" />

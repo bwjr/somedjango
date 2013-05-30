@@ -6,6 +6,7 @@ class Paper(models.Model):
     by_user = models.ForeignKey(User, related_name = 'by_user')
     title = models.CharField(max_length = 1000)
     body = models.TextField()
+    due = models.DateField()
     time = models.DateTimeField(auto_now = True)
 
     def __unicode__(self):
